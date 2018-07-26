@@ -52,6 +52,32 @@ if(APPLE)
         find_package( OpenCV REQUIRED )
 endif(APPLE)
 
+
+# Config for Linux:
+add_compile_options(-std=c++11)
+include_directories(/usr/local/include)
+#find_package( OpenCV REQUIRED )
+SET(OpenCV_Path /usr/local/lib)
+SET(OpenCV_LIBS ${OpenCV_Path}/libopencv_calib3d.so
+				${OpenCV_Path}/libopencv_core.so
+				${OpenCV_Path}/libopencv_dnn.so
+				${OpenCV_Path}/libopencv_features2d.so
+				${OpenCV_Path}/libopencv_flann.so
+				${OpenCV_Path}/libopencv_highgui.so
+				${OpenCV_Path}/libopencv_imgcodecs.so
+				${OpenCV_Path}/libopencv_imgproc.so
+				${OpenCV_Path}/libopencv_ml.so
+				${OpenCV_Path}/libopencv_objdetect.so
+				${OpenCV_Path}/libopencv_photo.so
+				${OpenCV_Path}/libopencv_shape.so
+				${OpenCV_Path}/libopencv_stitching.so
+				${OpenCV_Path}/libopencv_superres.so
+				${OpenCV_Path}/libopencv_videoio.so
+				${OpenCV_Path}/libopencv_video.so
+				${OpenCV_Path}/libopencv_videostab.so )
+# end Config for Linux
+
+
 include_directories("src/include")
 aux_source_directory("src/include" SOURCES_FILE)
 
@@ -62,7 +88,4 @@ aux_source_directory("src/include" SOURCES_FILE)
 
 ADD_EXECUTABLE(Roboman-SDM-TEST src/test_model.cpp)
 TARGET_LINK_LIBRARIES(Roboman-SDM-TEST ${OpenCV_LIBS})
-
-
-
 
